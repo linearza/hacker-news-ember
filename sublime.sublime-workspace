@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"type",
+				"typeClass"
+			],
+			[
+				"p",
+				"newPayload"
+			],
+			[
 				"mar",
 				"margin-right"
 			],
@@ -340,10 +348,6 @@
 				"margin-top"
 			],
 			[
-				"p",
-				"pb50"
-			],
-			[
 				"border",
 				"border-bottom"
 			],
@@ -510,10 +514,6 @@
 			[
 				"bet",
 				"betaIndex"
-			],
-			[
-				"beta",
-				"betaImage"
 			]
 		]
 	},
@@ -523,16 +523,133 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1167,
+				"buffer_size": 1284,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/app.scss",
+			"settings":
+			{
+				"buffer_size": 9,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": ".bowerrc",
+			"contents": "import DS from 'ember-data';\n\nexport default DS.JSONAPIAdapter.extend({\n  host: 'https://hacker-news.firebaseio.com/v0/'\n});\n",
+			"file": "app/adapters/application.js",
+			"file_size": 122,
+			"file_write_time": 131345684960000000,
 			"settings":
 			{
-				"buffer_size": 60,
+				"buffer_size": 125,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 45 files for \" No 'Access-Control-Allow-Origin' header is pres\"\n\n0 matches",
+			"settings":
+			{
+				"buffer_size": 84,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "config/environment.js",
+			"settings":
+			{
+				"buffer_size": 1288,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/routes/application.js",
+			"settings":
+			{
+				"buffer_size": 131,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/serializers/topstories.js",
+			"settings":
+			{
+				"buffer_size": 327,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "diff --git a/app/styles/app.scss b/app/styles/app.scss\nindex f9e9389..f0ef61d 100644\n--- a/app/styles/app.scss\n+++ b/app/styles/app.scss\n@@ -1,6 +1,3 @@\n body{\n-  background: blue;\n-  .something{\n-    color: red;\n-  }\n+\n }\ndiff --git a/app/templates/application.hbs b/app/templates/application.hbs\nindex c7913d7..5619fa3 100644\n--- a/app/templates/application.hbs\n+++ b/app/templates/application.hbs\n@@ -1,3 +1,7 @@\n \n \n-<span class=\"something\">Something</span>\n\\ No newline at end of file\n+<b>Topstories</b> <br>\n+\n+{{#each model as |item|}}\n+  {{item.id}}\n+{{/each}}\n\\ No newline at end of file\ndiff --git a/config/environment.js b/config/environment.js\nindex a8535ca..6198a11 100644\n--- a/config/environment.js\n+++ b/config/environment.js\n@@ -6,6 +6,14 @@ module.exports = function(environment) {\n     environment: environment,\n     rootURL: '/',\n     locationType: 'auto',\n+    contentSecurityPolicy: {\n+      'script-src': \"'self' 'unsafe-inline' 'unsafe-eval' https://cdn.firebase.com https://*.firebaseio.com\",\n+      'frame-src': \"'self' https://*.firebaseio.com\",\n+      'font-src': \"'self' fonts.gstatic.com\",\n+      'connect-src': \"'self' https://console.firebase.google.com https://accounts.google.com https://*.firebaseio.com wss://*.firebaseio.com ws://localhost:49152 ws://0.0.0.0:49152 ws://undefined:49152 http://localhost:4200\",\n+      'img-src': \"'self' res.cloudinary.com data:\",\n+      'style-src': \"'self' 'unsafe-inline' fonts.googleapis.com\"\n+    },\n     EmberENV: {\n       FEATURES: {\n         // Here you can enable experimental features on an ember canary build\ndiff --git a/package.json b/package.json\nindex 5fa0992..394e314 100644\n--- a/package.json\n+++ b/package.json\n@@ -20,6 +20,7 @@\n     \"ember-cli\": \"2.10.0\",\n     \"ember-cli-app-version\": \"^2.0.0\",\n     \"ember-cli-babel\": \"^5.1.7\",\n+    \"ember-cli-content-security-policy\": \"0.6.0\",\n     \"ember-cli-dependency-checker\": \"^1.3.0\",\n     \"ember-cli-htmlbars\": \"^1.0.10\",\n     \"ember-cli-htmlbars-inline-precompile\": \"^0.3.3\",\n@@ -27,6 +28,8 @@\n     \"ember-cli-jshint\": \"^2.0.1\",\n     \"ember-cli-qunit\": \"^3.0.1\",\n     \"ember-cli-release\": \"^0.2.9\",\n+    \"ember-cli-sass\": \"5.5.1\",\n+    \"ember-cli-sass-pods\": \"1.3.0\",\n     \"ember-cli-sri\": \"^2.1.0\",\n     \"ember-cli-test-loader\": \"^1.1.0\",\n     \"ember-cli-uglify\": \"^1.2.0\",\n@@ -34,9 +37,7 @@\n     \"ember-export-application-global\": \"^1.0.5\",\n     \"ember-load-initializers\": \"^0.5.1\",\n     \"ember-resolver\": \"^2.0.3\",\n-    \"loader.js\": \"^4.0.10\",\n-    \"ember-cli-sass\": \"5.5.1\",\n-    \"ember-cli-sass-pods\": \"1.3.0\"\n+    \"loader.js\": \"^4.0.10\"\n   },\n   \"engines\": {\n     \"node\": \">= 0.12.0\"\n",
+			"settings":
+			{
+				"buffer_size": 2623,
+				"line_ending": "Unix",
+				"name": "Git Diff",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "\n\n# --------------\n# Please enter the commit message for your changes. Everything below\n# this paragraph is ignored, and an empty message aborts the commit.\n# Just close the window to accept your message.\ndiff --git a/app/adapters/application.js b/app/adapters/application.js\nnew file mode 100644\nindex 0000000..a88c23f\n--- /dev/null\n+++ b/app/adapters/application.js\n@@ -0,0 +1,5 @@\n+import DS from 'ember-data';\n+\n+export default DS.RESTAdapter.extend({\n+  host: 'https://hacker-news.firebaseio.com/v0/'\n+});\ndiff --git a/app/adapters/topstories.js b/app/adapters/topstories.js\nnew file mode 100644\nindex 0000000..e71ec78\n--- /dev/null\n+++ b/app/adapters/topstories.js\n@@ -0,0 +1,13 @@\n+import ApplicationAdapter from './application';\n+\n+export default ApplicationAdapter.extend({\n+\n+  pathForType: function() {\n+    return 'topstories.json';\n+  },\n+\n+  // urlForFindAll(modelName, snapshot) {\n+  //   return 'https://hacker-news.firebaseio.com/v0/topstories.json';\n+  // }\n+\n+});\ndiff --git a/app/models/item.js b/app/models/item.js\nnew file mode 100644\nindex 0000000..859f1a6\n--- /dev/null\n+++ b/app/models/item.js\n@@ -0,0 +1,23 @@\n+import DS from 'ember-data';\n+\n+export default DS.Model.extend({\n+\n+  /*\n+    https://github.com/HackerNews/API#items\n+  */\n+\n+  deleted: DS.attr(),\n+  type: DS.attr(),\n+  by: DS.attr(),\n+  time: DS.attr(),\n+  text: DS.attr(),\n+  dead: DS.attr(),\n+  parent: DS.attr(),\n+  kids: DS.attr(),\n+  url: DS.attr(),\n+  score: DS.attr(),\n+  title: DS.attr(),\n+  parts: DS.attr(),\n+  descendants: DS.attr()\n+\n+});\ndiff --git a/app/models/topstories.js b/app/models/topstories.js\nnew file mode 100644\nindex 0000000..40ee9cb\n--- /dev/null\n+++ b/app/models/topstories.js\n@@ -0,0 +1,27 @@\n+import DS from 'ember-data';\n+\n+export default DS.Model.extend({\n+\n+  /*\n+    https://github.com/HackerNews/API#items\n+  */\n+\n+  // item: DS.belongsTo('item', {\n+  //   inverse: null\n+  // }),\n+\n+  // deleted: DS.attr(),\n+  // type: DS.attr(),\n+  // by: DS.attr(),\n+  // time: DS.attr(),\n+  // text: DS.attr(),\n+  // dead: DS.attr(),\n+  // parent: DS.attr(),\n+  // kids: DS.attr(),\n+  // url: DS.attr(),\n+  // score: DS.attr(),\n+  // title: DS.attr(),\n+  // parts: DS.attr(),\n+  // descendants: DS.attr()\n+\n+});\ndiff --git a/app/routes/application.js b/app/routes/application.js\nnew file mode 100644\nindex 0000000..04f2889\n--- /dev/null\n+++ b/app/routes/application.js\n@@ -0,0 +1,13 @@\n+import Ember from 'ember';\n+\n+export default Ember.Route.extend({\n+\n+  model() {\n+    return this.store.findAll('topstories');\n+  },\n+\n+  afterModel(model) {\n+    console.log(model);\n+  }\n+\n+});\ndiff --git a/app/serializers/topstories.js b/app/serializers/topstories.js\nnew file mode 100644\nindex 0000000..f318cb3\n--- /dev/null\n+++ b/app/serializers/topstories.js\n@@ -0,0 +1,16 @@\n+import DS from 'ember-data';\n+\n+export default DS.JSONSerializer.extend({\n+\n+  normalizeFindAllResponse: function(store, primaryModelClass, payload, id, requestType) {\n+\n+    for (var i = 0; i < payload.length; i++) {\n+      payload[i] = {\n+        id: payload[i]\n+      }\n+    }\n+\n+    return this._super.apply(this, arguments);\n+  }\n+\n+});\ndiff --git a/app/styles/app.scss b/app/styles/app.scss\nindex f9e9389..f0ef61d 100644\n--- a/app/styles/app.scss\n+++ b/app/styles/app.scss\n@@ -1,6 +1,3 @@\n body{\n-  background: blue;\n-  .something{\n-    color: red;\n-  }\n+\n }\ndiff --git a/app/templates/application.hbs b/app/templates/application.hbs\nindex c7913d7..5619fa3 100644\n--- a/app/templates/application.hbs\n+++ b/app/templates/application.hbs\n@@ -1,3 +1,7 @@\n \n \n-<span class=\"something\">Something</span>\n\\ No newline at end of file\n+<b>Topstories</b> <br>\n+\n+{{#each model as |item|}}\n+  {{item.id}}\n+{{/each}}\n\\ No newline at end of file\ndiff --git a/config/environment.js b/config/environment.js\nindex a8535ca..6198a11 100644\n--- a/config/environment.js\n+++ b/config/environment.js\n@@ -6,6 +6,14 @@ module.exports = function(environment) {\n     environment: environment,\n     rootURL: '/',\n     locationType: 'auto',\n+    contentSecurityPolicy: {\n+      'script-src': \"'self' 'unsafe-inline' 'unsafe-eval' https://cdn.firebase.com https://*.firebaseio.com\",\n+      'frame-src': \"'self' https://*.firebaseio.com\",\n+      'font-src': \"'self' fonts.gstatic.com\",\n+      'connect-src': \"'self' https://console.firebase.google.com https://accounts.google.com https://*.firebaseio.com wss://*.firebaseio.com ws://localhost:49152 ws://0.0.0.0:49152 ws://undefined:49152 http://localhost:4200\",\n+      'img-src': \"'self' res.cloudinary.com data:\",\n+      'style-src': \"'self' 'unsafe-inline' fonts.googleapis.com\"\n+    },\n     EmberENV: {\n       FEATURES: {\n         // Here you can enable experimental features on an ember canary build\ndiff --git a/package.json b/package.json\nindex 5fa0992..394e314 100644\n--- a/package.json\n+++ b/package.json\n@@ -20,6 +20,7 @@\n     \"ember-cli\": \"2.10.0\",\n     \"ember-cli-app-version\": \"^2.0.0\",\n     \"ember-cli-babel\": \"^5.1.7\",\n+    \"ember-cli-content-security-policy\": \"0.6.0\",\n     \"ember-cli-dependency-checker\": \"^1.3.0\",\n     \"ember-cli-htmlbars\": \"^1.0.10\",\n     \"ember-cli-htmlbars-inline-precompile\": \"^0.3.3\",\n@@ -27,6 +28,8 @@\n     \"ember-cli-jshint\": \"^2.0.1\",\n     \"ember-cli-qunit\": \"^3.0.1\",\n     \"ember-cli-release\": \"^0.2.9\",\n+    \"ember-cli-sass\": \"5.5.1\",\n+    \"ember-cli-sass-pods\": \"1.3.0\",\n     \"ember-cli-sri\": \"^2.1.0\",\n     \"ember-cli-test-loader\": \"^1.1.0\",\n     \"ember-cli-uglify\": \"^1.2.0\",\n@@ -34,9 +37,7 @@\n     \"ember-export-application-global\": \"^1.0.5\",\n     \"ember-load-initializers\": \"^0.5.1\",\n     \"ember-resolver\": \"^2.0.3\",\n-    \"loader.js\": \"^4.0.10\",\n-    \"ember-cli-sass\": \"5.5.1\",\n-    \"ember-cli-sass-pods\": \"1.3.0\"\n+    \"loader.js\": \"^4.0.10\"\n   },\n   \"engines\": {\n     \"node\": \">= 0.12.0\"\ndiff --git a/tests/unit/adapters/application-test.js b/tests/unit/adapters/application-test.js\nnew file mode 100644\nindex 0000000..f0a2101\n--- /dev/null\n+++ b/tests/unit/adapters/application-test.js\n@@ -0,0 +1,12 @@\n+import { moduleFor, test } from 'ember-qunit';\n+\n+moduleFor('adapter:application', 'Unit | Adapter | application', {\n+  // Specify the other units that are required for this test.\n+  // needs: ['serializer:foo']\n+});\n+\n+// Replace this with your real tests.\n+test('it exists', function(assert) {\n+  let adapter = this.subject();\n+  assert.ok(adapter);\n+});\ndiff --git a/tests/unit/adapters/item-test.js b/tests/unit/adapters/item-test.js\nnew file mode 100644\nindex 0000000..e049b0e\n--- /dev/null\n+++ b/tests/unit/adapters/item-test.js\n@@ -0,0 +1,12 @@\n+import { moduleFor, test } from 'ember-qunit';\n+\n+moduleFor('adapter:item', 'Unit | Adapter | item', {\n+  // Specify the other units that are required for this test.\n+  // needs: ['serializer:foo']\n+});\n+\n+// Replace this with your real tests.\n+test('it exists', function(assert) {\n+  let adapter = this.subject();\n+  assert.ok(adapter);\n+});\ndiff --git a/tests/unit/models/item-test.js b/tests/unit/models/item-test.js\nnew file mode 100644\nindex 0000000..378a318\n--- /dev/null\n+++ b/tests/unit/models/item-test.js\n@@ -0,0 +1,12 @@\n+import { moduleForModel, test } from 'ember-qunit';\n+\n+moduleForModel('item', 'Unit | Model | item', {\n+  // Specify the other units that are required for this test.\n+  needs: []\n+});\n+\n+test('it exists', function(assert) {\n+  let model = this.subject();\n+  // let store = this.store();\n+  assert.ok(!!model);\n+});\ndiff --git a/tests/unit/routes/application-test.js b/tests/unit/routes/application-test.js\nnew file mode 100644\nindex 0000000..9808c43\n--- /dev/null\n+++ b/tests/unit/routes/application-test.js\n@@ -0,0 +1,11 @@\n+import { moduleFor, test } from 'ember-qunit';\n+\n+moduleFor('route:application', 'Unit | Route | application', {\n+  // Specify the other units that are required for this test.\n+  // needs: ['controller:foo']\n+});\n+\n+test('it exists', function(assert) {\n+  let route = this.subject();\n+  assert.ok(route);\n+});\ndiff --git a/tests/unit/serializers/topstories-test.js b/tests/unit/serializers/topstories-test.js\nnew file mode 100644\nindex 0000000..7a18b40\n--- /dev/null\n+++ b/tests/unit/serializers/topstories-test.js\n@@ -0,0 +1,15 @@\n+import { moduleForModel, test } from 'ember-qunit';\n+\n+moduleForModel('topstories', 'Unit | Serializer | topstories', {\n+  // Specify the other units that are required for this test.\n+  needs: ['serializer:topstories']\n+});\n+\n+// Replace this with your real tests.\n+test('it serializes records', function(assert) {\n+  let record = this.subject();\n+\n+  let serializedRecord = record.serialize();\n+\n+  assert.ok(serializedRecord);\n+});",
+			"settings":
+			{
+				"buffer_size": 8542,
+				"line_ending": "Unix",
+				"name": "COMMIT_EDITMSG",
+				"scratch": true
+			}
+		},
+		{
+			"contents": "import ApplicationAdapter from './application';\n\nexport default ApplicationAdapter.extend({\n  pathForType: function() {\n    return 'item';\n  }\n});\n",
+			"file": "app/adapters/item.js",
+			"file_size": 147,
+			"file_write_time": 131345676000000000,
+			"settings":
+			{
+				"buffer_size": 147,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/item.js",
+			"settings":
+			{
+				"buffer_size": 382,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/topstories.js",
+			"settings":
+			{
+				"buffer_size": 486,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/.gitkeep",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/application.hbs",
+			"settings":
+			{
+				"buffer_size": 75,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -544,10 +661,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 247.0,
-		"last_filter": "gidia",
+		"height": 207.0,
+		"last_filter": "gitcom",
 		"selected_items":
 		[
+			[
+				"gitcom",
+				"Git: Commit"
+			],
 			[
 				"gidia",
 				"Git: Diff All Files"
@@ -571,10 +692,6 @@
 			[
 				"gitdi",
 				"Git: Diff All Files"
-			],
-			[
-				"gitcom",
-				"Git: Commit"
 			],
 			[
 				"gitdif",
@@ -774,10 +891,19 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/michiel/Projects/hacker-news-ember"
+		"/Users/michiel/Projects/hacker-news-ember",
+		"/Users/michiel/Projects/hacker-news-ember/app",
+		"/Users/michiel/Projects/hacker-news-ember/app/adapters",
+		"/Users/michiel/Projects/hacker-news-ember/app/models",
+		"/Users/michiel/Projects/hacker-news-ember/app/routes",
+		"/Users/michiel/Projects/hacker-news-ember/app/serializers",
+		"/Users/michiel/Projects/hacker-news-ember/app/templates",
+		"/Users/michiel/Projects/hacker-news-ember/config"
 	],
 	"file_history":
 	[
+		"/Users/michiel/Projects/hacker-news-ember/app/adapters/topstories.js",
+		"/Users/michiel/Projects/hacker-news-ember/sublime.sublime-project",
 		"/Users/michiel/Documents/TO DO",
 		"/Users/michiel/Projects/frontend-b5b/app/components/my-trip/style.scss",
 		"/Users/michiel/Projects/frontend-b5b/app/styles/base/_type.scss",
@@ -903,13 +1029,11 @@
 		"/Users/michiel/Projects/frontend-b5b/app/components/grouping-highlights/style.scss",
 		"/Users/michiel/Projects/frontend-b5b/app/trip/dashboard/index/controller.js",
 		"/Users/michiel/Projects/frontend-b5b/app/trip/quote/controller.js",
-		"/Users/michiel/Projects/frontend-b5b/app/components/booking-steps/step/flights-confirmation/component.js",
-		"/Users/michiel/Projects/frontend-b5b/app/models/quote.js",
-		"/Users/michiel/Projects/frontend-b5b/app/components/booking-steps/step/guest-details/component.js"
+		"/Users/michiel/Projects/frontend-b5b/app/components/booking-steps/step/flights-confirmation/component.js"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -924,6 +1048,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fire",
+			" No 'Access-Control-Allow-Origin' header is pres",
+			"pods",
 			"/v1",
 			".col-sm-6",
 			"col-sm-6",
@@ -1048,10 +1175,7 @@
 			"isNaN",
 			"formatters",
 			"textFormatters",
-			"convertCurrency",
-			"small-print",
-			"{{#each-in trip.itinerary.quote.bill.prices.balanceDue",
-			"This is based on"
+			"convertCurrency"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1140,7 +1264,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -1149,15 +1273,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1167,
+						"buffer_size": 1284,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1071,
-								1071
+								91,
+								92
 							]
 						],
 						"settings":
@@ -1173,16 +1297,379 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": ".bowerrc",
+					"file": "app/styles/app.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								6
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/adapters/application.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 125,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 84,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/michiel/Projects/hacker-news-ember",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "config/environment.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								299,
+								299
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/routes/application.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								125,
+								125
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/serializers/topstories.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 327,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								263,
+								263
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2623,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/michiel/Projects/hacker-news-ember",
+							"git_root_dir": "/Users/michiel/Projects/hacker-news-ember",
+							"syntax": "Packages/Diff/Diff.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8542,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4006,
+								4027
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/michiel/Projects/hacker-news-ember",
+							"rulers":
+							[
+								70
+							],
+							"syntax": "Packages/Git/syntax/Git Commit Message.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3856.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/adapters/item.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								136,
+								136
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/models/item.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								331,
+								331
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/models/topstories.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								119
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/models/.gitkeep",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 60,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1206,7 +1693,40 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/templates/application.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 75,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19,
+								19
+							]
+						],
+						"settings":
+						{
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
